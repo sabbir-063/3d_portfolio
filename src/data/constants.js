@@ -542,8 +542,8 @@ export const projects = [
       "React", "Html", "CSS"
     ],
     category: "web app",
-    github: "https://github.com/rishavchanda/Brain-Tumor-Detection",
-    webapp: "https://brain-tumor.netlify.app/",
+    github: "https://github.com/sabbir-063/my-basic-portfolio",
+    webapp: "https://my-basic-portfolio-eta.vercel.app/",
     member: [
       {
         name: "Sabbir Musfique",
