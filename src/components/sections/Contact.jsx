@@ -1,7 +1,7 @@
-import React, { useRef } from "react";
+import React from "react";
 import styled from "styled-components";
-import emailjs from "@emailjs/browser";
 
+// Styled-components for the form
 const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -44,89 +44,115 @@ const Desc = styled.div`
     font-size: 16px;
   }
 `;
+const FormContainer = styled.div`
+  background: #ffffff;
+  padding: 30px 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 600px; /* Increased width */
+  text-align: center;
+  margin: 50px auto;
+  font-family: Arial, sans-serif;
 
-const ContactForm = styled.div`
-  width: 95%;
-  max-width: 600px;
+  @media (max-width: 768px) {
+    padding: 20px;
+    max-width: 90%; /* Responsive for smaller screens */
+  }
+`;
+
+const ContactForm = styled.form`
   display: flex;
   flex-direction: column;
-  background-color: rgba(17, 25, 40, 0.83);
-  border: 1px solid rgba(255, 255, 255, 0.125);
-  padding: 32px;
-  border-radius: 12px;
-  box-shadow: rgba(23, 92, 230, 0.1) 0px 4px 24px;
-  margin-top: 28px;
-  gap: 12px;
-`;
-const ContactTitle = styled.div`
-  font-size: 28px;
-  margin-bottom: 6px;
-  font-weight: 600;
-  color: ${({ theme }) => theme.text_primary};
-`;
-const ContactInput = styled.input`
-  flex: 1;
-  background-color: transparent;
-  border: 1px solid ${({ theme }) => theme.text_secondary + 50};
-  outline: none;
-  font-size: 18px;
-  color: ${({ theme }) => theme.text_primary};
-  border-radius: 12px;
-  padding: 12px 16px;
-  &:focus {
-    border: 1px solid ${({ theme }) => theme.primary};
-  }
-`;
-const ContactInputMessage = styled.textarea`
-  flex: 1;
-  background-color: transparent;
-  border: 1px solid ${({ theme }) => theme.text_secondary + 50};
-  outline: none;
-  font-size: 18px;
-  color: ${({ theme }) => theme.text_primary};
-  border-radius: 12px;
-  padding: 12px 16px;
-  &:focus {
-    border: 1px solid ${({ theme }) => theme.primary};
-  }
-`;
-const ContactButton = styled.input`
-  width: 100%;
-  text-decoration: none;
-  text-align: center;
-  background: hsla(271, 100%, 50%, 1);
-  padding: 13px 16px;
-  margin-top: 2px;
-  border-radius: 12px;
-  border: none;
-  color: ${({ theme }) => theme.text_primary};
-  font-size: 18px;
-  font-weight: 600;
 `;
 
-const Contact = () => {
-  const form = useRef();
-  const handelSubmit = (e) => {
-    e.preventDefault();
-    emailjs
-      .sendForm(
-        "service_tox7kqs",
-        "template_nv7k7mj",
-        form.current,
-        "SybVGsYS52j2TfLbi"
-      )
-      .then(
-        (result) => {
-          alert("Message Sent");
-          form.current.result();
-        },
-        (error) => {
-          alert(error);
-        }
-      );
+const FormHeading = styled.h2`
+  margin-bottom: 20px;
+  color: #333333;
+  font-size: 1.8em;
+`;
+
+const FormInput = styled.input`
+  width: 100%;
+  padding: 14px 15px;
+  margin: 10px 0;
+  border: 1px solid #dddddd;
+  border-radius: 5px;
+  font-size: 16px;
+  box-sizing: border-box;
+
+  &:focus {
+    border-color: #007bff;
+    outline: none;
+  }
+`;
+
+const FormTextarea = styled.textarea`
+  width: 100%;
+  padding: 14px 15px;
+  margin: 10px 0;
+  border: 1px solid #dddddd;
+  border-radius: 5px;
+  font-size: 16px;
+  box-sizing: border-box;
+  height: 250px; /* Increased height */
+  resize: none;
+
+  &:focus {
+    border-color: #007bff;
+    outline: none;
+  }
+`;
+
+const FormButton = styled.button`
+  background: #007bff;
+  color: #ffffff;
+  border: none;
+  padding: 14px 20px;
+  font-size: 18px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background: #0056b3;
+  }
+`;
+
+const FormResult = styled.span`
+  margin-top: 15px;
+  font-size: 16px;
+  color: #555555;
+`;
+
+function App() {
+  const [result, setResult] = React.useState("");
+
+  const onSubmit = async (event) => {
+    event.preventDefault();
+    setResult("Sending....");
+    const formData = new FormData(event.target);
+
+    formData.append("access_key", "5b3db061-84a8-4626-a55d-8d82521c43c9");
+
+    const response = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      body: formData,
+    });
+
+    const data = await response.json();
+
+    if (data.success) {
+      setResult("Form Submitted Successfully");
+      event.target.reset();
+    } else {
+      console.log("Error", data);
+      setResult(data.message);
+    }
   };
+
   return (
-    <Container id="Education">
+    <Container id="contact">
       <Wrapper>
         <Title>Contact</Title>
         <Desc
@@ -136,17 +162,24 @@ const Contact = () => {
         >
           Feel free to reach out to me for any questions or opportunities!
         </Desc>
-        <ContactForm onSubmit={handelSubmit}>
-          <ContactTitle>Email Me 🚀</ContactTitle>
-          <ContactInput placeholder="Your Email" name="from_email" />
-          <ContactInput placeholder="Your Name" name="from_name" />
-          <ContactInput placeholder="Subject" name="subject" />
-          <ContactInputMessage placeholder="Message" name="message" rows={4} />
-          <ContactButton type="submit" value="Send" />
-        </ContactForm>
+        <FormContainer>
+          <ContactForm onSubmit={onSubmit}>
+            <FormHeading>Email Me 🚀</FormHeading>
+            <FormInput type="text" name="name" placeholder="Your Name" required />
+            <FormInput type="email" name="email" placeholder="Your Email" required />
+            <FormTextarea
+              name="message"
+              placeholder="Your Message"
+              rows="10" /* Additional rows for textarea */
+              required
+            ></FormTextarea>
+            <FormButton type="submit">Submit</FormButton>
+          </ContactForm>
+          <FormResult>{result}</FormResult>
+        </FormContainer>
       </Wrapper>
     </Container>
   );
-};
+}
 
-export default Contact;
+export default App;

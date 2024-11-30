@@ -1,10 +1,13 @@
+import { arduino, bikreta, basicportfolio, oneconnect, transitpro } from '../images'
+
+
 export const Bio = {
   name: "Sabbir Musfique",
   roles: [
     "Full Stack Developer",
     "Flutter Developer",
     "UI/UX Designer",
-    "Competetive Programmer",
+    "Problem Solver",
   ],
   description:
     "I'm an experienced competitive programmer who loves solving tough problems and has successfully competed in many online challenges. I also have a strong background in software development, working well in team projects. I'm excited about the opportunity to use my programming and teamwork skills in a software developer role at a tech company.",
@@ -423,7 +426,7 @@ export const projects = [
     description:
       "OneConnect is a donation app that allows users to donate to verified posts, the central fund, donation requests, and admin verified user posts. It supports other users and helps people through central fund donations.",
     image:
-      "https://github.com/sabbir-063/one_connect_app/blob/master/assets/logos/One_Connect.png",
+      oneconnect,
     tags: [
       "Flutter", "Firebase", "Firestore", "Dart", "Getx"
     ],
@@ -452,7 +455,7 @@ export const projects = [
     description:
       "Bikreta is an online shopping site where shopkeepers can buy products in large amounts or cartons. It lets the admin see all transactions and details, predicts which products will sell well in the future, and uses simple diagrams to track and analyze how well each product is doing.",
     image:
-      "https://user-images.githubusercontent.com/64485885/255202416-e1f89b04-2788-45b0-abc2-9dec616669e2.png",
+      bikreta,
     tags: [
       "React", "Node", "Express", "MongoDB", "JWT", "Netlify", "Cloudinary"
     ],
@@ -481,7 +484,7 @@ export const projects = [
     description:
       "A Combined Bus Management System for seeing, buying, downloading ticket and admin can add bus for different routes.",
     image:
-      "https://user-images.githubusercontent.com/64485885/234602896-a1bd8bcc-b72b-4821-83d6-8ad885bf435e.png",
+      transitpro,
     tags: ["PHP", "Laravel", "Oracle", "Html", "CSS"],
     category: "web app",
     github: "https://github.com/marzun9620/Transit-Pro",
@@ -508,7 +511,7 @@ export const projects = [
     description:
       "Arduino snake game using 8x24 Dot Matrix, Arduino Uno, Joy Stick, LCD Display with I2C Module, etc.",
     image:
-      "https://user-images.githubusercontent.com/64485885/234916413-96296f13-fe4b-4cc4-b215-e72bd7c27928.png",
+      arduino,
     tags: [
       "Arduino Uno", "Dot Matrix", "LCD display", "Joy Stick"
     ],
@@ -537,7 +540,7 @@ export const projects = [
     description:
       "A basic portfolio using html, css, javascript and React.",
     image:
-      "https://github.com/rishavchanda/Brain-Tumor-Detection/raw/main/Readme_resource/Image2.png",
+      basicportfolio,
     tags: [
       "React", "Html", "CSS"
     ],
