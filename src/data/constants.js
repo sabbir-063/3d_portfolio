@@ -1,4 +1,4 @@
-import { arduino, bikreta, basicportfolio, oneconnect, transitpro } from '../images'
+import { arduino, bikreta, basicportfolio, oneconnect, transitpro, machine_learning, sabbir_portfolio_1 } from '../images'
 
 
 export const Bio = {
@@ -420,7 +420,7 @@ export const education = [
 
 export const projects = [
   {
-    id: 11,
+    id: 1,
     title: "OneConnect - Android Donation App",
     date: "Apr 2024 - Aug 2024",
     description:
@@ -446,10 +446,28 @@ export const projects = [
         linkedin: "https://www.linkedin.com/in/enamul-marzun/",
         github: "https://github.com/marzun9620",
       },
+      {
+        name: "Arr Rafi",
+        img: "https://avatars.githubusercontent.com/u/124251597?v=4",
+        linkedin: "https://www.linkedin.com/in/arr-rafi-598a18226/",
+        github: "https://github.com/ARRRAFI10",
+      },
+      {
+        name: "Abdullah Omar Nasif",
+        img: "https://avatars.githubusercontent.com/u/148195748?v=4",
+        linkedin: "https://www.linkedin.com/in/nasif273/",
+        github: "https://github.com/nasif273",
+      },
+      {
+        name: "MD. IMRAN-UL-HUQ",
+        img: "https://avatars.githubusercontent.com/u/101411817?v=4",
+        linkedin: "https://www.linkedin.com/in/imran-khan-b6b712202/",
+        github: "https://github.com/Imrann-Khan",
+      },
     ],
   },
   {
-    id: 9,
+    id: 2,
     title: "Bikreta - An ecommerce website",
     date: "Oct 2023 - Jan 2024",
     description:
@@ -475,10 +493,22 @@ export const projects = [
         linkedin: "https://www.linkedin.com/in/msmusique063/",
         github: "https://github.com/sabbir-063/",
       },
+      {
+        name: "Arr Rafi",
+        img: "https://avatars.githubusercontent.com/u/124251597?v=4",
+        linkedin: "https://www.linkedin.com/in/arr-rafi-598a18226/",
+        github: "https://github.com/ARRRAFI10",
+      },
+      {
+        name: "Abdullah Omar Nasif",
+        img: "https://avatars.githubusercontent.com/u/148195748?v=4",
+        linkedin: "https://www.linkedin.com/in/nasif273/",
+        github: "https://github.com/nasif273",
+      },
     ],
   },
   {
-    id: 0,
+    id: 3,
     title: "TransitPro - Bus management system",
     date: "Apr 2023 - Aug 2023",
     description:
@@ -505,7 +535,7 @@ export const projects = [
     ],
   },
   {
-    id: 1,
+    id: 4,
     title: "Arduino Snake Game Project",
     date: "Apr 2022 - Aug 2023",
     description:
@@ -515,7 +545,7 @@ export const projects = [
     tags: [
       "Arduino Uno", "Dot Matrix", "LCD display", "Joy Stick"
     ],
-    category: "android app",
+    category: "hardware",
     github: "https://github.com/sabbir-063/Arduino-Snake-Game",
     webapp: "https://www.youtube.com/watch?v=li0WeOCbRcw",
     member: [
@@ -531,10 +561,16 @@ export const projects = [
         linkedin: "https://www.linkedin.com/in/enamul-marzun/",
         github: "https://github.com/marzun9620",
       },
+      {
+        name: "Asir Ahbab Raiyan",
+        img: "https://avatars.githubusercontent.com/u/156565802?v=4",
+        linkedin: "https://www.linkedin.com/in/asir-ahbab-raiyan-188045259/",
+        github: "https://github.com/asirahbab01",
+      },
     ],
   },
   {
-    id: 2,
+    id: 5,
     title: "Basic Portfolio",
     date: "Oct 2024 - Nov 2024",
     description:
@@ -547,6 +583,51 @@ export const projects = [
     category: "web app",
     github: "https://github.com/sabbir-063/my-basic-portfolio",
     webapp: "https://my-basic-portfolio-eta.vercel.app/",
+    member: [
+      {
+        name: "Sabbir Musfique",
+        img: "https://avatars.githubusercontent.com/u/114491259?v=4",
+        linkedin: "https://www.linkedin.com/in/msmusfique063/",
+        github: "https://github.com/sabbir-063/",
+      },
+    ],
+  },
+  {
+    id: 6,
+    title: "All ML Projects",
+    date: "Oct 2024 - Present",
+    description: "House price prediction, digit recognition, spam email detection etc using different ml models.",
+    image: machine_learning,
+    tags: [
+      "scikit learn", "ml models", "python",
+    ],
+    category: "machine learning",
+    github: "https://github.com/sabbir-063/ML_Projects",
+    webapp: "https://github.com/sabbir-063/ML_Projects",
+    member: [
+      {
+        name: "Sabbir Musfique",
+        img: "https://avatars.githubusercontent.com/u/114491259?v=4",
+        linkedin: "https://www.linkedin.com/in/msmusfique063/",
+        github: "https://github.com/sabbir-063/",        
+      },
+    ],
+
+  },
+  {
+    id: 5,
+    title: "React 3d Portfolio",
+    date: "Oct 2024 - Nov 2024",
+    description:
+      "A react portfolio using html, css, javascript, react and three js",
+    image:
+      sabbir_portfolio_1,
+    tags: [
+      "Three Js", "React", "Html", "CSS"
+    ],
+    category: "web app",
+    github: "https://github.com/sabbir-063/sabbir_3d_portfolio",
+    webapp: "https://sabbirmusfique.vercel.app/",
     member: [
       {
         name: "Sabbir Musfique",
