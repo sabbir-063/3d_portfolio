@@ -13,7 +13,7 @@ export const Bio = {
     "I'm an experienced competitive programmer who loves solving tough problems and has successfully competed in many online challenges. I also have a strong background in software development, working well in team projects. I'm excited about the opportunity to use my programming and teamwork skills in a software developer role at a tech company.",
   github: "https://github.com/sabbir-063",
   resume:
-    "https://drive.google.com/file/d/1UR1QfzvJGDyHQZfdKz4wzwgtfE7GLDK6/view?usp=drive_link",
+    "https://drive.google.com/file/d/1k2cwLtDutPnRda0GwYdHjV6siKfg6VcX/view?usp=sharing",
   linkedin: "https://www.linkedin.com/in/msmusique063/",
   twitter: "https://twitter.com/sabbir_063",
   insta: "https://www.instagram.com/_sabbir_063/",
@@ -383,9 +383,9 @@ export const skills = [
 // ];
 
 export const experiences = [
-{
+  {
 
-},
+  },
 ];
 
 export const education = [
@@ -609,7 +609,7 @@ export const projects = [
         name: "Sabbir Musfique",
         img: "https://avatars.githubusercontent.com/u/114491259?v=4",
         linkedin: "https://www.linkedin.com/in/msmusfique063/",
-        github: "https://github.com/sabbir-063/",        
+        github: "https://github.com/sabbir-063/",
       },
     ],
 
@@ -637,6 +637,6 @@ export const projects = [
       },
     ],
   },
-  
+
 ];
 
