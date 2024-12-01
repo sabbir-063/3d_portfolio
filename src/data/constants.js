@@ -532,6 +532,12 @@ export const projects = [
         linkedin: "https://www.linkedin.com/in/msmusique063/",
         github: "https://github.com/sabbir-063/",
       },
+      {
+        name: "Asir Ahbab Raiyan",
+        img: "https://avatars.githubusercontent.com/u/156565802?v=4",
+        linkedin: "https://www.linkedin.com/in/asir-ahbab-raiyan-188045259/",
+        github: "https://github.com/asirahbab01",
+      },
     ],
   },
   {
