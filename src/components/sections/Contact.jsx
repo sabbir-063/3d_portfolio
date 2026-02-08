@@ -160,7 +160,7 @@ const darkTheme = {
 
 function App() {
   const [result, setResult] = React.useState("");
-  const [isDarkMode, setIsDarkMode] = React.useState(true); // Toggle between light and dark mode
+  const isDarkMode = true; // Toggle between light and dark mode
 
   const onSubmit = async (event) => {
     event.preventDefault();
