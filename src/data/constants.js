@@ -14,7 +14,8 @@ export const Bio = {
   github: "https://github.com/sabbir-063",
   resume:
     // "https://drive.google.com/file/d/1k2cwLtDutPnRda0GwYdHjV6siKfg6VcX/view?usp=sharing",
-    "https://drive.google.com/file/d/1h7ZZ-Mm7NHgLesvwJiXSsvnZWjoQnCFw/view?usp=sharing",
+    // "https://drive.google.com/file/d/1h7ZZ-Mm7NHgLesvwJiXSsvnZWjoQnCFw/view?usp=sharing",
+    "https://drive.google.com/file/d/1cn9WDXnmlDNBYp_t8THzBwOizaHo90g4/view?usp=sharing",
   linkedin: "https://www.linkedin.com/in/msmusique063/",
   twitter: "https://twitter.com/sabbir_063",
   insta: "https://www.instagram.com/_sabbir_063/",
