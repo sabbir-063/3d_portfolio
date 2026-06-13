@@ -1,0 +1,220 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Custom scrollbar ───────────────────────────────── */
+::-webkit-scrollbar {
+  width: 3px;
+  height: 3px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgb(var(--color-primary) / 0.35);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(var(--color-primary) / 0.65);
+}
+::-webkit-scrollbar-button {
+  display: none;
+}
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgb(var(--color-primary) / 0.35) transparent;
+}
+
+@layer base {
+  /* ─── Light mode (default) ─────────────────────────── */
+  :root {
+    /* Space-separated RGB for Tailwind opacity modifier support */
+    --color-background:         244 241 252;   /* #F4F1FC — soft lavender, keeps brand identity */
+    --color-surface:            244 241 252;
+    --color-primary:            88  70  160;   /* #5846A0 — deep purple,  6.4:1 on bg ✓ */
+    --color-secondary:          25  105 116;   /* #196974 — deep teal,    5.9:1 on bg ✓ */
+    --color-tertiary:           100 68  134;   /* #644486 — deep violet,  6.9:1 on bg ✓ */
+    --color-on-surface:         18  14  34;    /* #12_0E22 — near-black,  ~20:1 on bg ✓ */
+    --color-on-surface-variant: 66  55  96;    /* #423760 — dark purple,  9.7:1 on bg ✓ */
+    --color-on-primary:         255 255 255;   /* white — for dark primary buttons in light mode */
+
+    /* Glass panel — pure white panels on lavender bg = visible depth */
+    --glass-bg:           rgba(255, 255, 255, 0.78);
+    --glass-border:       rgba(0, 0, 0, 0.09);
+    --glass-shadow:       0 4px 24px rgba(0, 0, 0, 0.09), inset 0 1px 0 rgba(255, 255, 255, 0.98);
+    --glass-hover-bg:     rgba(255, 255, 255, 0.95);
+    --glass-hover-border: rgba(88, 70, 160, 0.16);
+
+    /* Terminal card — intentionally always dark */
+    --terminal-bg:     rgba(14, 11, 28, 0.96);
+    --terminal-border: rgba(88, 70, 160, 0.25);
+    --terminal-shadow: 0 8px 40px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+
+    /* Photo card */
+    --photo-card-bg:     rgba(255, 255, 255, 0.75);
+    --photo-card-border: rgba(88, 70, 160, 0.22);
+    --photo-card-shadow: 0 0 40px rgba(88, 70, 160, 0.1), 0 16px 40px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.98);
+    --photo-bottom-fade: linear-gradient(to top, rgba(230, 226, 245, 0.85), transparent);
+
+    /* Micro surface (SkillsV2 sub-cards) */
+    --micro-card-bg:     rgba(0, 0, 0, 0.03);
+    --micro-card-border: rgba(0, 0, 0, 0.08);
+
+    /* Glow tuning — softer in light mode, dark text on light bg needs less spread */
+    --text-glow-opacity: 0.18;
+    --grid-opacity: 0.06;
+
+    /* Selection */
+    --selection-bg: rgba(88, 70, 160, 0.18);
+  }
+
+  /* ─── Dark mode ──────────────────────────────────────── */
+  .dark {
+    --color-background:         15  12  28;    /* #0f0c1c */
+    --color-surface:            15  12  28;
+    --color-primary:            199 185 245;   /* #c7b9f5 */
+    --color-secondary:          201 232 238;   /* #c9e8ee */
+    --color-tertiary:           244 226 255;   /* #f4e2ff */
+    --color-on-surface:         236 229 252;   /* #ece5fc */
+    --color-on-surface-variant: 174 168 190;   /* #aea8be */
+    --color-on-primary:         64  53  103;   /* #403567 — dark text on light primary buttons */
+
+    --glass-bg:           rgba(255, 255, 255, 0.03);
+    --glass-border:       rgba(255, 255, 255, 0.08);
+    --glass-shadow:       0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    --glass-hover-bg:     rgba(255, 255, 255, 0.07);
+    --glass-hover-border: rgba(255, 255, 255, 0.15);
+
+    --terminal-bg:     rgba(6, 6, 16, 0.85);
+    --terminal-border: rgba(199, 185, 245, 0.15);
+    --terminal-shadow: 0 8px 48px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+
+    --photo-card-bg:     rgba(255, 255, 255, 0.03);
+    --photo-card-border: rgba(199, 185, 245, 0.2);
+    --photo-card-shadow: 0 0 70px rgba(199, 185, 245, 0.12), 0 28px 64px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    --photo-bottom-fade: linear-gradient(to top, rgba(6, 6, 16, 0.65), transparent);
+
+    --micro-card-bg:     rgba(255, 255, 255, 0.02);
+    --micro-card-border: rgba(255, 255, 255, 0.07);
+
+    --text-glow-opacity: 0.5;
+    --grid-opacity: 0.04;
+
+    --selection-bg: rgba(199, 185, 245, 0.3);
+  }
+
+  html {
+    /* Prevent transformed children from driving document width on iOS Safari */
+    overflow-x: clip;
+    /* Smooth theme transition */
+    transition: background-color 0.4s ease, color 0.4s ease;
+  }
+  /* Lenis handles smooth scrolling — opt-in via data attribute for native fallback (silences Next.js warning) */
+  html[data-scroll-behavior="smooth"] {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: var(--font-inter), "Inter", sans-serif;
+    cursor: default;
+    overflow-x: hidden;
+    background-color: rgb(var(--color-background));
+    color: rgb(var(--color-on-surface));
+  }
+
+  h1, h2, h3, .headline {
+    font-family: var(--font-space-grotesk), "Space Grotesk", sans-serif;
+  }
+
+  ::selection {
+    background-color: var(--selection-bg);
+  }
+}
+
+/* ─── Theme switch — dissolve ────────────────────────── */
+@keyframes theme-out { to   { opacity: 0; } }
+@keyframes theme-in  { from { opacity: 0; } }
+
+::view-transition-old(root) {
+  animation: 300ms ease theme-out;
+}
+::view-transition-new(root) {
+  animation: 300ms ease theme-in;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation-duration: 0.01ms !important;
+  }
+}
+
+/* ─── Background blob drift — pure CSS (cheaper than Framer Motion × N) ─ */
+@keyframes blob-drift {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  40%      { transform: translate3d(12px, -8px, 0) scale(1.08); }
+  70%      { transform: translate3d(-6px, 5px, 0) scale(0.96); }
+}
+.blob-drift {
+  animation-name: blob-drift;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+/* Pause expensive animations and disable smooth scroll for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .blob-drift { animation: none !important; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@layer components {
+  /* ─── Glassmorphism system ───────────────────────────── */
+  .glass-panel {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+  }
+
+  .glass-card-hover {
+    @apply transition-all duration-500;
+  }
+  .glass-card-hover:hover {
+    background: var(--glass-hover-bg);
+    border-color: var(--glass-hover-border);
+    box-shadow: 0 20px 50px rgba(var(--color-primary) / 0.15);
+  }
+
+  /* ─── Glow effects ───────────────────────────────────── */
+  .text-glow {
+    text-shadow: 0 0 15px rgb(var(--color-primary) / var(--text-glow-opacity));
+  }
+
+  .glow-primary {
+    box-shadow: 0 0 40px rgba(var(--color-primary) / 0.4);
+  }
+
+  .glow-primary-hover:hover {
+    box-shadow: 0 0 60px rgba(var(--color-primary) / 0.6);
+  }
+
+  /* ─── Background helpers ─────────────────────────────── */
+  .section-bg-blob {
+    @apply absolute pointer-events-none opacity-20 blur-[100px] z-0;
+  }
+
+  /* ─── Soft grid ──────────────────────────────────────── */
+  .soft-grid {
+    background-image:
+      linear-gradient(to right, rgb(var(--color-primary) / var(--grid-opacity)) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(var(--color-primary) / var(--grid-opacity)) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+}

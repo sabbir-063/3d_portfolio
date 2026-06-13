@@ -1,0 +1,474 @@
+    %-------------------------
+% Resume in Latex
+% Author
+% License : MIT
+%------------------------
+
+%---- Required Packages and Functions ----
+
+\documentclass[a4paper,11pt]{article}
+\usepackage[left=10px,right=10px,top=10px,bottom=10px]{geometry}
+
+\usepackage{latexsym}
+\usepackage{xcolor}
+\usepackage{float}
+\usepackage{ragged2e}
+\usepackage[empty]{fullpage}
+\usepackage{wrapfig}
+\usepackage{lipsum}
+\usepackage{tabularx}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{fontawesome5}
+% \usepackage[hidelinks,colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue]{hyperref}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage{cfr-lm}
+\usepackage[T1]{fontenc}
+\setlength{\multicolsep}{0pt} 
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\geometry{left=1.2cm, top=0.7cm, right=1.2cm, bottom=1.3cm}
+% Adjust margins
+%\addtolength{\oddsidemargin}{-0.5in}
+%\addtolength{\evensidemargin}{-0.5in}
+%\addtolength{\textwidth}{1in}
+\usepackage[most]{tcolorbox}
+\tcbset{
+	frame code={}
+	center title,
+	left=0pt,
+	right=0pt,
+	top=0pt,
+	bottom=0pt,
+	colback=gray!20,
+	colframe=white,
+	width=\dimexpr\textwidth\relax,
+	enlarge left by=-2mm,
+	boxsep=4pt,
+	arc=0pt,outer arc=0pt,
+}
+\hypersetup{
+    colorlinks=true, 
+    linkcolor=blue, 
+    pdfnewwindow=true,
+    urlcolor=blue % Ensures links are blue-colored
+}
+\urlstyle{same}
+
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+\newenvironment{onecolentry}{
+    \begin{adjustwidth}{
+        0.1 cm + 0.00001 cm
+    }{
+        0.1 cm + 0.00001 cm
+    }
+}{
+    \end{adjustwidth}
+} % new environment for one column entries
+
+\newenvironment{twocolentry}[2][]{
+    \onecolentry
+    \def\secondColumn{#2}
+    \setcolumnwidth{\fill, 4.2cm}
+    \begin{paracol}{2}
+    \setlength{\parskip}{0pt}  % Remove paragraph spacing
+    \setlength{\parsep}{0pt}    % Remove space between list items
+    \setlength{\topsep}{0pt}    % Reduce space before the entry
+}{
+    \switchcolumn \raggedleft \secondColumn
+    \end{paracol}
+    \endonecolentry
+}
+
+
+\newenvironment{threecolentry}[3][]{
+    \onecolentry
+    \def\thirdColumn{#3}
+    \setcolumnwidth{0.5 cm, \fill, 3 cm}
+    \begin{paracol}{3}
+    {\raggedright #2} \switchcolumn
+}{
+    \switchcolumn \raggedleft \thirdColumn
+    \end{paracol}
+    \endonecolentry
+} % new environment for three column entries
+
+\newenvironment{header}{
+    \setlength{\topsep}{0pt}\par\kern\topsep\centering\color{primaryColor}\linespread{1.5}
+}{
+    \par\kern\topsep
+} % new environment for the header
+
+
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-7pt}]
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[2]{
+  \item{
+    \textbf{#1}{\hspace{0.5mm}#2 \vspace{-0.5mm}}
+  }
+}
+
+\newcommand{\resumePOR}[3]{
+\vspace{0.5mm}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+        \textbf{#1}\hspace{0.3mm}#2 & \textit{\small{#3}} 
+    \end{tabular*}
+    \vspace{-2mm}
+}
+
+\newcommand{\resumeSubheading}[4]{
+\vspace{0.5mm}\item
+    \begin{tabular*}{0.98\textwidth}[t]{l@{\extracolsep{\fill}}r}
+        \textbf{#1} & \textit{\footnotesize{#4}} \\
+        \textit{\footnotesize{#3}} &  \footnotesize{#2}\\
+    \end{tabular*}
+    \vspace{-2.4mm}
+}
+
+\newcommand{\resumeProject}[4]{
+\vspace{0.5mm}\item
+    \begin{tabular*}{0.98\textwidth}[t]{l@{\extracolsep{\fill}}r}
+        \textbf{#1} & \textit{\footnotesize{#3}} \\
+        \footnotesize{\textit{#2}} & \footnotesize{#4}
+    \end{tabular*}
+    \vspace{-2.4mm}
+}
+
+\newcommand{\resumeSubItem}[2]{\resumeItem{#1}{#2}\vspace{-4pt}}
+% \renewcommand{\labelitemii}{$\circ$}
+\renewcommand{\labelitemi}{$\vcenter{\hbox{\tiny$\bullet$}}$}
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=*,labelsep=0mm]}
+\newcommand{\resumeHeadingSkillStart}{\begin{itemize}[leftmargin=*,itemsep=1.7mm, rightmargin=2ex]}
+\newcommand{\resumeItemListStart}{\begin{justify}\begin{itemize}[leftmargin=3ex, rightmargin=2ex, noitemsep,labelsep=1.2mm,itemsep=0mm]\small}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}\vspace{2mm}}
+\newcommand{\resumeHeadingSkillEnd}{\end{itemize}\vspace{-2mm}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\end{justify}\vspace{-2mm}}
+\newcommand{\cvsection}[1]{%
+\vspace{2mm}
+\begin{tcolorbox}
+    \textbf{\large #1}
+\end{tcolorbox}
+    \vspace{-4mm}
+}
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}%
+\newcolumntype{R}{>{\raggedleft\arraybackslash}X}%
+\newcolumntype{C}{>{\centering\arraybackslash}X}%
+%---- End of Packages and Functions ------
+
+%-------------------------------------------
+%%%%%%  CV STARTS HERE  %%%%%%%%%%%
+%%%%%% DEFINE ELEMENTS HERE %%%%%%%
+\newcommand{\name}{Mohammad Sabbir Musfique} % Your Name
+\newcommand{\course}{Computer Science and Engineering} % Your Program
+\newcommand{\roll}{202114063} % Your Roll No.
+\newcommand{\phone}{+8801884952804} % Your Phone Number
+\newcommand{\emaila}{sabbir.musfique01@gmail.com} %Email 1
+
+\begin{document}
+\fontfamily{cmr}\selectfont
+
+
+
+%----------HEADING-----------------
+\begin{tabularx}{\linewidth}{L r} \\
+  \begin{minipage}[t]{0.52\textwidth}
+    \textbf{\Large \name} \\
+    Software Engineer, AI/ML Enthusiast \\
+    % CSE, MIST \\
+    Bachelor of Science (Bsc) \\
+    Department of Computer Science and Engineering (CSE)\\
+    Military Institute of Science and Technology (MIST) \\
+  \end{minipage}
+  &
+  \begin{minipage}[t]{0.48\textwidth}
+    \begin{flushright}
+      \textbf{Email:} \href{mailto:sabbir.musfique01@gmail.com}{\emaila} \\
+      \textbf{Github:} \href{https://github.com/sabbir-063}{sabbir-063} \\
+      \textbf{LinkedIn:} \href{https://www.linkedin.com/in/msmusfique063}{msmusfique063} \\
+      \textbf{Contact Number:} \phone \\
+      \textbf{Address:} Mirpur, Dhaka-1216 \\
+    \end{flushright}
+  \end{minipage}
+\end{tabularx}
+
+\vspace{-5mm}
+
+%----------PROFESSIONAL SUMMARY-----------------
+
+%\section{\textbf{Professional Summary }}
+%\begin{justify}
+%Motivated final year CSE undergraduate at MIST with a strong foundation in app and web development, focused on \textbf{clean coding practices}. \textbf{Led 5+ management teams} in national and international contests, hackathons, and projects. Been active in \textbf{competitive programming for three years}. Committed to innovative and continuous improvement.
+
+%\end{justify}
+\vspace{-1mm}
+
+%----------EXPERIENCE-----------------
+\section{\textbf{Experience}}
+
+\textbf{Junior Software \& Data Engineer} | \textit{Be Data Solutions} \hfill Sept 2025 -- Present \\
+% \textit{Be Data Solutions}
+
+\vspace{0.1em}
+
+\textbf{Tucki -- AI-based Family Nutrition App (Backend)} \\
+\textit{Node.js, TypeScript, PostgreSQL, Prisma, pgvector}
+\vspace{-0.6em}
+\begin{itemize}[itemsep=-0.5em]
+    \item Built backend services for meal logging, weekly meal plan generation, and nutrition score computation.
+    \item Developed APIs to support RAG-based nutrition Q\&A and personalized food recommendations.
+\end{itemize}
+
+\vspace{-0.4em}
+
+\textbf{Leasedrop -- Lease extraction Software (Backend)} \\
+\textit{Java, Spring Boot, PostgreSQL, Redis, SSE}
+\vspace{-0.6em}
+\begin{itemize}[itemsep=-0.5em]
+    \item Developed Organization and Workspace APIs enabling organizations to create accounts, manage workspaces, and invite users with structured access control.
+    \item Implemented lease document chat functionality using Server-Sent Events (SSE) to stream Gemini API responses chunk by chunk for real-time lease Q\&A and comparison.
+\end{itemize}
+
+\vspace{-0.4em}
+
+\textbf{Audience Intelligence -- User Segmentation Platform (Backend)} \\
+\textit{Java, Spring Boot, Microservices}
+\vspace{-0.6em}
+\begin{itemize}[itemsep=-0.5em]
+    \item Integrated Azure Blob Storage using SAS URLs to enable cloud-based data analysis.
+    % \item Added support for direct local CSV uploads for on-demand analysis.
+    \item Fixed and stabilized existing SFTP server, Big query integrations for secure data ingestion.
+    \item Prepared datasets for ML microservices performing K-Means clustering for user segmentation.
+\end{itemize}
+
+\vspace{-0.4em}
+
+\textbf{IntelliSearch -- CI/CD Automation} \\
+\textit{Jenkins, GitLab CI, React, Node.js}
+\vspace{-0.6em}
+\begin{itemize}[itemsep=-0.5em]
+    \item Designed and maintained CI/CD pipelines for frontend (React + TypeScript) and backend (Node.js).
+    \item Automated build and deployment workflows, improving deployment reliability using Jenkins.
+\end{itemize}
+
+\vspace{-0.4em}
+
+\textbf{CRM System (NPS Module) -- Frontend Contributions} \\
+\textit{React, TypeScript}
+\vspace{-0.6em}
+\begin{itemize}[itemsep=-0.5em]
+    \item Improved lead collection workflows and dropdown management features.
+    \item Improved UI consistency and collaborated with backend teams for API integration.
+\end{itemize}
+
+\vspace{-0.85em}
+
+%----------- skills-----------------
+\section{\textbf{Skills}}
+\vspace{0.3em}
+ \begin{itemize}[leftmargin=0.01in, label={}]
+    {\item{
+     \textbf{Programming Languages:} JavaScript, TypeScript, Python, Java, Dart, C, C++ \\
+\textbf{Development Stack:} MERN, Flutter, Spring Boot \\
+\textbf{Databases:} PostgreSQL, Prisma, MongoDB, Firebase, MySQL, Faiss \\
+\textbf{Machine Learning:} Model Development, Sk-learn, Tensorflow, Keras, NLP, OpenCV, Langchain \\
+% \textbf{Tools:} Git, Github, Notion, Figma \\
+\textbf{Relevant Coursework: } DSA, OOP, DBMS, OS, Software Engineering \\
+% \textbf{Relevant Coursework: } DSA, OOP, DBMS, OS, Software Engineering \\
+\textbf{Spoken Languages:} Bangla (Native), English (Professional)
+    }}
+ \end{itemize}
+ 
+\vspace{-0.95em}
+
+
+%-----------PROJECTS-----------------
+\section{\textbf{Projects}}
+
+% \vspace{0.3em}
+
+\textbf{NextBlog - A Blogging Website} \hfill
+\underline{\href{https://nextblogsite-nu.vercel.app/}{\textcolor{blue}{Live Link}}} | 
+\underline{\href{https://github.com/sabbir-063/BlogSite_frontend}{\textcolor{blue}{Client Code}}} | 
+ \underline{\href{https://github.com/sabbir-063/BlogSite_backend}{\textcolor{blue}{Server Code}}} \\
+\textit{React, Node, Express, MongoDB, Tailwind, Vercel, Render} 
+\vspace{-0.2em} 
+\begin{itemize}[itemsep=-0.5em] 
+    \item Built a blogging platform enabling users to register, create and manage posts, and maintain profiles.
+    \item Integrated secure authentication, protected routes, rich-text editing, image uploads, and error handling.
+\end{itemize}
+
+\vspace{-0.5mm}
+
+\textbf{Bikreta - A Friend of Growth} \hfill
+\underline{\href{https://bikreta.netlify.app/}{\textcolor{blue}{Live Link}}} | 
+\underline{\href{https://github.com/sabbir-063/Bikreta_client}{\textcolor{blue}{Client Code}}} | 
+ \underline{\href{https://github.com/sabbir-063/Bikreta_server}{\textcolor{blue}{Server Code}}} \\
+\textit{React, Node, Express, MongoDB, Cloudinary, Netlify, Render} 
+\vspace{-0.2em} 
+\begin{itemize}[itemsep=-0.5em] 
+    \item Built a e-commerce platform that empowers small business owners to purchase products in bulk.
+    \item Included admin dashboards to analyze sales trends  using basic data visualizations.
+\end{itemize}
+
+
+\vspace{-0.5mm}
+
+
+\textbf{OneConnect App - Android-based Donation Platform} \hfill
+\underline{\href{https://www.youtube.com/watch?v=RrXlpB_5l7E}{\textcolor{blue}{Demo Video}}} | 
+\underline{\href{https://github.com/sabbir-063/one_connect_app}{\textcolor{blue}{Full Code}}} \\
+\textit{Flutter, Firebase, FireStore, Getx} 
+\vspace{-0.2em} 
+\begin{itemize}[itemsep=-0.5em] 
+    \item Developed a donation app enabling users to contribute to verified individual posts, a central fund. 
+    \item Implemented role-based access control for admins to manage users and see donation data through graphs.
+\end{itemize}
+
+\vspace{-0.5mm}
+
+\textbf{Multilingual-RAG-Pipeline} \hfill
+\underline{\href{https://github.com/sabbir-063/Multilingual-RAG-Chat}{\textcolor{blue}{Full Code}}} \\
+\textit{FastAPI, Faiss, Gemini AI, Sentence Transformers} 
+\vspace{-0.2em} 
+\begin{itemize}[itemsep=-0.5em] 
+    \item Developed a multilingual RAG system using FastAPI, Faiss, and Google Gemini AI, enabling semantic search and question answering in both English and Bangla with content safety guardrails.
+\end{itemize}
+
+\vspace{-0.5mm}
+
+\textbf{Bangla Sign Recognition using Hand Gestures} \hfill
+\underline{\href{https://github.com/sabbir-063/BdSL-Codes}{\textcolor{blue}{Full Code}}} \\
+\textit{Tensorflow, Keras, GridSearchCV, Sk-learn, OpenCV} 
+\vspace{-0.2em} 
+\begin{itemize}[itemsep=-0.5em] 
+    \item Trained and optimized multiple ML and DL models on augmented BdSL datasets using GridSearchCV, and integrated the best model into a real-time sign detection system with OpenCV and MediaPipe.
+
+\end{itemize}
+
+\vspace{-0.5mm}
+
+\textbf{Cold Email Generator} \hfill
+\underline{\href{https://cold-mail-sabbir.streamlit.app/}{\textcolor{blue}{Live Link}}} |  
+ \underline{\href{https://github.com/sabbir-063/LLM_Projects/tree/main/ColdEmailGenerator}{\textcolor{blue}{Full Code}}} \\
+\textit{Streamlit, LangChain, Gemini AI, Faiss} 
+\vspace{-0.2em} 
+\begin{itemize}[itemsep=-0.5em] 
+    \item Developed a Cold Email Generator app that scrapes job postings, matches requirements with portfolio items using Faiss and Sentence Transformers, and generates emails with Gemini AI and LangChain.
+\end{itemize}
+
+
+\vspace{-1.10em}
+\section{\textbf{Achievements}}
+
+\vspace{0.3em}
+\begin{tabularx}{\textwidth}{@{}Xr@{}}
+
+\textbf{Finalist} in SRBD Code Contest 2025 &
+ {Oct 2025} \\
+ 
+Solved \textbf{600+ Problems} in Leetcode (Max Rating : \textbf{1496}, Username: \href{https://leetcode.com/u/sabbir_063/}{\textcolor{blue}{sabbir\_063}}) &
+ {May 2025} \\
+
+\textbf{Pupil} in Codeforces (Max Rating : \textbf{1388}, Username: \href{https://codeforces.com/profile/sabbir_063}{\textcolor{blue}{sabbir\_063}}) &
+ {July 2024} \\
+ 
+\textbf{2 star} in CodeChef (Max Rating : \textbf{1573}, Username: \href{https://www.codechef.com/users/sabbirmusfique}{\textcolor{blue}{sabbirmusfique}}) &
+ {May 2024} \\
+
+
+\textbf{7\textsuperscript{th} place} in Independent Day Programming Contest 2023 &
+{Apr 2023} \\
+
+
+\end{tabularx}
+
+\vspace{-0.85em}
+
+
+\section{\textbf{Programming Contests}}
+\noindent
+\begin{tabularx}{\textwidth}{@{}X r@{}}
+    \textbf{UU Inter University Programming Contest 2025} & \ \textbf{Jun 2025} \\
+    \textit{Team: MIST\_hotasha} & \ Position: 72th \\
+    
+    \textbf{DUET Inter University Programming Contest 2025} & \ \textbf{May 2025} \\
+    \textit{Team: MIST\_EaglesEye} & \ Position: 65th \\
+    
+    \textbf{Independent Day Programming Contest 2023} & \ \textbf{Apr 2023} \\
+    \textit{Team: MIST\_Troubleshooters} & \ Position: 7th \\
+    
+    \textbf{SEC Inter University Junior Programming Contest 2022} & \ \textbf{Aug 2022} \\ 
+    \textit{Team: MIST\_UpsideDown} & \ Position: 51th \\
+   
+    
+
+\end{tabularx}
+
+% \vspace{-6mm}
+\vspace{-0.85em}
+
+\section{\textbf{Certifications}}
+
+ Oracle Cloud Infrastructure 2025 Certified AI Foundations Associate - Oracle Cloud |  
+ \href{https://catalog-education.oracle.com/ords/certview/sharebadge?id=09C8330039ADF181D59F29F68E65F7A87BFCBA68BB17A1C48AE0EBD6999E0AF5}{\textcolor{blue}{Certificate}} \hfill {Aug 2025} \\
+
+\vspace{1mm}
+
+Problem Solving (Intermediate) Certificate - HackerRank |  
+ \href{https://www.hackerrank.com/certificates/fae3b660893c}{\textcolor{blue}{Certificate}} \hfill {Jan 2025} \\
+
+\vspace{1mm}
+
+Intermediate Git Certificate - Datacamp |  
+ \href{https://www.datacamp.com/completed/statement-of-accomplishment/course/4d7c3e41be49b6849d28be185d1323a0c77fdf20}{\textcolor{blue}{Certificate}} \hfill {May 2025} \\
+
+\vspace{1mm}
+
+SQL (Intermediate) Certificate - HackerRank |  
+        \href{https://www.hackerrank.com/certificates/446b56df67be}{\textcolor{blue}{Certificate}} \hfill {Apr 2025}\\ 
+
+\vspace{1mm}
+
+Supervised Learning with scikit-learn - Datacamp |  
+        \href{https://www.datacamp.com/completed/statement-of-accomplishment/course/1ef4221d963b30ac513c8dd17006cd556f2c04ad}{\textcolor{blue}{Certificate}} \hfill {Dec 2024}\\ 
+
+\vspace{1mm}
+
+Introduction to Natural Language Processing in Python - Datacamp |  
+        \href{https://www.datacamp.com/completed/statement-of-accomplishment/course/8243e2e169388070436c0f01e11d743f69c86364}{\textcolor{blue}{Certificate}} \hfill {Dec 2024}\\ 
+        
+\vspace{1mm}
+
+Full Stack Development with MERN - Grameenphone Academy |  
+        \href{https://www.linkedin.com/posts/msmusfique063_full-stack-development-with-mern-activity-7349727387204341760-cyHi?utm_source=share&utm_medium=member_desktop&rcm=ACoAADtw6WMBpbGoigXgF9HtTjMnbyKYrapbva0}{\textcolor{blue}{Certificate}} \hfill {July 2025}\\ 
+
+\vspace{-0.85 em}
+
+\section{\textbf{Education}}
+\noindent
+\begin{tabularx}{\textwidth}{@{}X r@{}}
+    \textbf{Military Institute of Science and Technology} & \
+    Apr 2021 – July 2025 \\[0.1cm]
+    Bachelor of Science in Computer Science and Engineering. & \hfill {Mirpur, Dhaka} \\
+
+\end{tabularx}
+
+
+%-------------------------------------------
+\end{document}
