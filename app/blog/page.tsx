@@ -32,7 +32,7 @@ export default function BlogIndexPage() {
       <div className="max-w-6xl mx-auto">
         <header className="mb-14">
           <h1 className="text-3xl md:text-5xl font-bold font-headline tracking-tight text-on-surface">
-            The <span className="text-tertiary text-glow">Codex</span>
+            Knowledge <span className="text-tertiary text-glow">Hub</span>
           </h1>
           <p className="text-on-surface-variant mt-2 text-sm font-body max-w-md">
             Exploring architecture, engineering, and modern software practices.

@@ -33,10 +33,10 @@ export default function Blogs({ posts, total }: BlogsProps) {
       <div className="max-w-6xl mx-auto relative z-10">
         <div ref={headingRef} className="relative mb-12">
           <SectionHeading
-            pre="The"
-            accent="Codex"
+            pre="Knowledge"
+            accent="Hub"
             accentClassName="text-tertiary text-glow"
-            subtitle="Reflections on engineering, system design, and the craft of building software."
+            subtitle="Exploring architecture, engineering, and modern software practices."
             dividerColor="from-tertiary"
           />
           <Link

@@ -6,6 +6,7 @@ import { getAllPostsMeta, getPost } from "@/lib/blog";
 import { categories } from "@/lib/blog/categories";
 import MarkdownContent from "@/lib/blog/render";
 import { TagPill, AnimatedBlob } from "@/components/ui";
+import Comments from "@/components/blogs/Comments";
 
 const SITE_URL = "https://sabbirmusfique.com.bd";
 
@@ -164,6 +165,8 @@ export default async function BlogPostPage({
             </div>
           </div>
         )}
+
+        <Comments slug={post.slug} />
 
         <div className="mt-14 pt-8 border-t border-black/[0.08] dark:border-white/[0.08] flex items-center justify-between">
           <Link

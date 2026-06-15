@@ -43,7 +43,6 @@ export default function MouseEffect() {
   const [enabled, setEnabled] = useState(false);
   const idRef = useRef(0);
 
-  const dotRef = useRef<HTMLDivElement>(null);
   const ringRef = useRef<HTMLDivElement>(null);
 
   // Track theme changes
@@ -73,11 +72,8 @@ export default function MouseEffect() {
   useEffect(() => {
     if (!enabled) return;
 
-    document.body.style.cursor = "none";
-
-    const dot = dotRef.current;
     const ring = ringRef.current;
-    if (!dot || !ring) return;
+    if (!ring) return;
 
     let targetX = -300;
     let targetY = -300;
@@ -90,13 +86,11 @@ export default function MouseEffect() {
     const showCursors = () => {
       if (visible) return;
       visible = true;
-      dot.style.opacity = "1";
       ring.style.opacity = "1";
     };
 
     const hideCursors = () => {
       visible = false;
-      dot.style.opacity = "0";
       ring.style.opacity = "0";
     };
 
@@ -123,8 +117,6 @@ export default function MouseEffect() {
     const onMove = (e: MouseEvent) => {
       targetX = e.clientX;
       targetY = e.clientY;
-      // Inner dot: snap instantly so it always sits exactly under the pointer
-      dot.style.transform = `translate3d(${targetX}px, ${targetY}px, 0) translate(-50%, -50%)`;
       showCursors();
       startTick();
     };
@@ -151,7 +143,6 @@ export default function MouseEffect() {
 
     return () => {
       cancelAnimationFrame(raf);
-      document.body.style.cursor = "";
       window.removeEventListener("mousemove", onMove);
       window.removeEventListener("mousedown", onDown);
       window.removeEventListener("contextmenu", onContext);
@@ -164,32 +155,7 @@ export default function MouseEffect() {
 
   return (
     <>
-      {enabled && (
-        <style>{`*, *::before, *::after { cursor: none !important; }`}</style>
-      )}
-
-      {/* Inner precision dot — instant follow, direct DOM transforms */}
-      <div
-        ref={dotRef}
-        style={{
-          position: "fixed",
-          top: 0,
-          left: 0,
-          width: 6,
-          height: 6,
-          borderRadius: "50%",
-          background: theme.dot,
-          boxShadow: theme.dotGlow,
-          opacity: 0,
-          zIndex: 99999,
-          pointerEvents: "none",
-          willChange: "transform",
-          transform: "translate3d(-300px, -300px, 0)",
-          transition: "opacity 150ms ease, background 200ms ease",
-        }}
-      />
-
-      {/* Trailing glass ring — eased follow via lerp */}
+      {/* Trailing glass ring — eased follow via lerp. Native cursor stays visible. */}
       <div
         ref={ringRef}
         style={{
