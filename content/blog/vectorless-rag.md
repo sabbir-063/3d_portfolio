@@ -152,6 +152,8 @@ Let us examine its main forms.
 
 ## Approach 1: Keyword and full-text retrieval
 
+![Keyword and full-text retrieval pipeline](/blog/vectorless-rag/approach1_keyword_fulltext_retrieval.png "Approach 1 — Keyword and full-text retrieval")
+
 The most direct approach uses lexical search. It retrieves documents based on the words that appear in both the query and the indexed content.
 
 This is more capable than writing:
@@ -197,6 +199,8 @@ Keyword retrieval works particularly well for:
 - names and abbreviations
 
 ## Approach 2: SQL and metadata retrieval
+
+![SQL and metadata retrieval pipeline](/blog/vectorless-rag/approach2_sql_metadata_retrieval.png "Approach 2 — SQL and metadata retrieval")
 
 Not every question should search unstructured text.
 
@@ -258,6 +262,8 @@ The system can then run full-text search only over that smaller, relevant set.
 
 ## Approach 3: Structure-aware document retrieval
 
+![Structure-aware document retrieval pipeline](/blog/vectorless-rag/approach3_structure_aware_document_retrieval.png "Approach 3 — Structure-aware document retrieval")
+
 Large documents are not random collections of paragraphs. They have structure:
 
 - titles
@@ -304,6 +310,8 @@ This approach can preserve more context than fixed-size chunking. It also makes 
 
 ## Approach 4: Knowledge graph retrieval
 
+![Knowledge graph retrieval pipeline](/blog/vectorless-rag/approach4_knowledge_graph_retrieval.png "Approach 4 — Knowledge graph retrieval")
+
 Some information is best represented as entities and relationships.
 
 Consider:
@@ -343,6 +351,8 @@ Graph-based retrieval is useful when questions involve:
 The graph itself does not need dense vectors, although some systems combine graph traversal with vector search.
 
 ## Approach 5: Agentic search
+
+![Agentic search pipeline](/blog/vectorless-rag/approach5_agentic_search.png "Approach 5 — Agentic search")
 
 A one-shot retriever performs one search and returns the top results. An **agentic retriever** can search repeatedly.
 

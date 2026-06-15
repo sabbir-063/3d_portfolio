@@ -6,10 +6,15 @@ type Block =
   | { type: "ul" | "ol"; items: string[] }
   | { type: "quote"; text: string }
   | { type: "code"; lang: string; code: string }
+  | { type: "img"; src: string; alt: string; caption?: string }
   | { type: "hr" };
+
+// A standalone image: ![alt](/path/to.png "optional caption")
+const IMAGE_RE = /^!\[([^\]]*)\]\(\s*([^)\s]+)(?:\s+"([^"]*)")?\s*\)\s*$/;
 
 const isBlockStarter = (line: string): boolean =>
   line.startsWith("```") ||
+  line.startsWith("![") ||
   line.startsWith("## ") ||
   line.startsWith("### ") ||
   line.startsWith("> ") ||
@@ -35,6 +40,13 @@ function tokenize(md: string): Block[] {
       }
       i++;
       blocks.push({ type: "code", lang, code: buf.join("\n") });
+      continue;
+    }
+
+    const img = line.match(IMAGE_RE);
+    if (img) {
+      blocks.push({ type: "img", alt: img[1], src: img[2], caption: img[3] });
+      i++;
       continue;
     }
 
@@ -205,6 +217,25 @@ export default function MarkdownContent({ source }: { source: string }) {
               <pre key={i} className="my-7 p-5 rounded-xl glass-panel overflow-x-auto text-[0.85rem] font-mono leading-relaxed">
                 <code>{b.code}</code>
               </pre>
+            );
+          case "img":
+            return (
+              <figure key={i} className="my-9">
+                <div className="overflow-hidden rounded-2xl glass-panel">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={b.src}
+                    alt={b.alt}
+                    loading="lazy"
+                    className="w-full h-auto block"
+                  />
+                </div>
+                {b.caption && (
+                  <figcaption className="mt-3 text-center text-xs text-on-surface-variant/80 font-label tracking-wide">
+                    {b.caption}
+                  </figcaption>
+                )}
+              </figure>
             );
           case "hr":
             return <hr key={i} className="my-12 border-black/[0.08] dark:border-white/[0.08]" />;
