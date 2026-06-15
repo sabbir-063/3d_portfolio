@@ -1,10 +1,10 @@
 import { getAllPostsMeta } from "@/lib/blog";
-import BlogCard from "@/components/blogs/BlogCard";
+import BlogListing from "@/components/blogs/BlogListing";
 
 export const metadata = {
-  title: "The Codex",
+  title: "Knowledge hub",
   description:
-    "Reflections on software engineering, system design, and the craft of building web systems — by Mohammad Sabbir Musfique.",
+    "Exploring architecture, engineering, and modern software practices — by Mohammad Sabbir Musfique.",
   keywords: [
     "software engineering blog",
     "React",
@@ -16,9 +16,9 @@ export const metadata = {
   ],
   alternates: { canonical: "/blog" },
   openGraph: {
-    title: "The Codex | Mohammad Sabbir Musfique",
+    title: "Knowledge hub | Mohammad Sabbir Musfique",
     description:
-      "Reflections on software engineering, system design, and the craft of building web systems.",
+      "Exploring architecture, engineering, and modern software practices.",
     url: "/blog",
     type: "website",
   },
@@ -35,7 +35,7 @@ export default function BlogIndexPage() {
             The <span className="text-tertiary text-glow">Codex</span>
           </h1>
           <p className="text-on-surface-variant mt-2 text-sm font-body max-w-md">
-            Reflections on engineering, system design, and the craft of building software.
+            Exploring architecture, engineering, and modern software practices.
           </p>
           <div className="w-16 h-0.5 bg-gradient-to-r from-tertiary to-transparent rounded-full mt-3" />
         </header>
@@ -46,11 +46,7 @@ export default function BlogIndexPage() {
             <p className="text-on-surface-variant text-sm mt-4 font-body">First post coming soon.</p>
           </div>
         ) : (
-          <div className="flex flex-col gap-5">
-            {posts.map((post, i) => (
-              <BlogCard key={post.slug} {...post} index={i} />
-            ))}
-          </div>
+          <BlogListing posts={posts} />
         )}
       </div>
     </main>
