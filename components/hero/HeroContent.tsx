@@ -135,7 +135,7 @@ export default function HeroContent() {
         className="flex flex-wrap gap-3 pt-1"
       >
         <a
-          href="https://drive.google.com/file/d/1XCS-qrwcjv1paqBokfk4dpO-Lmt1VE1e/view?usp=sharing"
+          href="https://drive.google.com/file/d/1e46qBL8JWdes_FqWy6kV_05_PMfTazrI/view?usp=sharing"
           target="_blank"
           rel="noopener noreferrer"
           className="relative px-6 py-2.5 rounded-xl font-semibold font-headline text-sm flex items-center gap-2 text-on-primary overflow-hidden transition-all duration-300 hover:scale-105 backdrop-blur-xl bg-primary/80 border border-primary/40 shadow-[0_0_20px_rgb(var(--color-primary)/0.3),inset_0_1px_0_rgba(255,255,255,0.3)] dark:shadow-[0_0_30px_rgba(199,185,245,0.35),inset_0_1px_0_rgba(255,255,255,0.15)] hover:bg-primary/95 hover:shadow-[0_0_35px_rgb(var(--color-primary)/0.45),inset_0_1px_0_rgba(255,255,255,0.35)] dark:hover:shadow-[0_0_55px_rgba(199,185,245,0.6),inset_0_1px_0_rgba(255,255,255,0.2)]"
